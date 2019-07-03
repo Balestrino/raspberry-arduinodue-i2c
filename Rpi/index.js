@@ -30,5 +30,11 @@ board.on('ready', function () {
    ws.send('hey!')
   })
 
+board.on('exit', function () {
+  const led = new five.Led('P1-7');
+  led.off();
+  console.log("Board shutdown");
+})
+
 });
 
