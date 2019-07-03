@@ -5,6 +5,8 @@ const board = new five.Board({
 });
 
 const readline = require('readline');
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({port: 8080})
 
 board.on('ready', function () {
   // Create an Led on pin 7 on header P1 (GPIO4) and strobe it on/off
@@ -19,6 +21,14 @@ board.on('ready', function () {
   this.repl.inject({ write });
 
   write("Hello World");
+
+  wss.on('connection', ws => {
+    ws.on('message', message => {
+      write(message);
+      console.log(`received message => ${message}`)
+   })
+   ws.send('hey!')
+  })
 
 });
 

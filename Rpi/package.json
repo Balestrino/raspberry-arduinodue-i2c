@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "johnny-five": "^1.1.0",
-    "raspi-io": "^10.0.2"
+    "raspi-io": "^10.0.2",
+    "ws": "^7.0.1"
   },
   "devDependencies": {},
   "scripts": {
